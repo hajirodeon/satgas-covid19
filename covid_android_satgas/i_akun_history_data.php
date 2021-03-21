@@ -1,0 +1,97 @@
+<?php
+session_start();
+
+//ambil nilai
+require("../inc/config.php");
+require("../inc/fungsi.php");
+require("../inc/koneksi.php");
+
+nocache;
+
+//nilai
+$filenya = "$sumber/covid_android_satgas/i_akun_history_data.php";
+$filenyax = "$sumber/covid_android_satgas/i_akun_history_data.php";
+$judul = "history";
+$juduli = $judul;
+
+
+
+//nilai session
+$sesiku = $_SESSION['sesiku'];
+$sesinama = $_SESSION['sesinama'];
+
+
+
+
+## Read value
+$draw = cegah($_POST['draw']);
+$row = cegah($_POST['start']);
+$rowperpage = cegah($_POST['length']); // Rows display per page
+$columnIndex = cegah($_POST['order'][0]['column']); // Column index
+$columnName = cegah($_POST['columns'][$columnIndex]['data']); // Column name
+$columnSortOrder = cegah($_POST['order'][0]['dir']); // asc or desc
+$searchValue = mysqli_real_escape_string($koneksi,cegah($_POST['search']['value'])); // Search value
+
+## Search 
+$searchQuery = " ";
+if($searchValue != ''){
+	$searchQuery = " and (postdate like '%".$searchValue."%' or 
+        lat_x like '%".$searchValue."%' ) ";
+}
+
+
+		
+	
+## Total number of records without filtering
+$sel = mysqli_query($koneksi,"select count(*) as allcount ".
+								"FROM orang_lokasi ".
+								"WHERE orang_kd = '$sesiku' ".
+								"AND status = 'MASUK'");
+$records = mysqli_fetch_assoc($sel);
+$totalRecords = $records['allcount'];
+
+## Total number of records with filtering
+$sel = mysqli_query($koneksi,"select count(*) as allcount  ".
+								"FROM orang_lokasi ".
+								"WHERE orang_kd = '$sesiku' ".
+								"AND status = 'MASUK' ".$searchQuery);
+$records = mysqli_fetch_assoc($sel);
+$totalRecordwithFilter = $records['allcount'];
+
+## Fetch records
+$empQuery = "select * FROM orang_lokasi ".
+				"WHERE orang_kd = '$sesiku' ".
+				"AND status = 'MASUK' ".$searchQuery." order by ".$columnName." ".$columnSortOrder." limit ".$row.",".$rowperpage;
+$empRecords = mysqli_query($koneksi, $empQuery);
+
+$data = array();
+
+while ($row = mysqli_fetch_assoc($empRecords)) {
+		
+	//nilai
+	$nomer = $nomer + 1;;
+	$e_kd = balikin($row['kd']);
+	$e_postdate = balikin($row['postdate']);
+	$e_latx = balikin($row['lat_x']);
+	$e_laty = balikin($row['lat_y']);
+	$e_gps = "$e_latx, $e_laty";
+
+
+	
+	
+    $data[] = array(
+    		"postdate"=>"$e_postdate",
+    		"gps"=>$e_gps
+    	);
+}
+
+## Response
+$response = array(
+    "draw" => intval($draw),
+    "iTotalRecords" => $totalRecords,
+    "iTotalDisplayRecords" => $totalRecordwithFilter,
+    "aaData" => $data
+);
+
+echo json_encode($response);
+?>
