@@ -274,6 +274,7 @@ if ((isset($_GET['aksi']) && $_GET['aksi'] == 'form'))
 	$sort = cegah($_GET['sort6']);
 	$pageke = cegah($_GET['pageke6']);
 	$sortx = cegah($_SESSION['sortx6']);
+	$sortnya = cegah($_SESSION['sortnya']);
 	$page = nosql($_GET['page6']);
 	$limitku = cegah($_GET['limitku6']);
 	$limitku2 = cegah($_SESSION['limitku6']);
@@ -293,22 +294,51 @@ if ((isset($_GET['aksi']) && $_GET['aksi'] == 'form'))
 		
 		
 	
-	//jika null ato ASC
-	if (empty($sortx)) 
+	//jika null 
+	if (empty($sort)) 
 		{
-		$_SESSION['sortx6'] = "ASC";
+		$sortkolom = $_SESSION['sortkolom'];
 		}
-		
-	else if ($sortx == "ASC")
+	else
 		{
-		$_SESSION['sortx6'] = "DESC";
-		}
-		
-	else if ($sortx == "DESC")
-		{
-		$_SESSION['sortx6'] = "ASC";
+		$_SESSION['sortkolom'] = $sort;
+		$sortkolom = $_SESSION['sortkolom'];
 		}
 	
+	
+	
+	
+
+	
+	
+	//jika ada klik
+	if (!empty($sort))
+		{
+		//jika null ato ASC
+		if (empty($sortx)) 
+			{
+			$_SESSION['sortx6'] = "ASC";
+			$_SESSION['sortnya'] = "ASC";
+			}
+			
+	
+		else if ($sortx == "ASC")
+			{
+			$_SESSION['sortx6'] = "DESC";
+			$_SESSION['sortnya'] = "ASC";
+			}
+			
+		else if ($sortx == "DESC")
+			{
+			$_SESSION['sortx6'] = "ASC";
+			$_SESSION['sortnya'] = "DESC";
+			}
+		}
+		
+	else
+		{			
+		$sortnya = cegah($_SESSION['sortnya']);
+		}
 	?>
 	
 
@@ -328,7 +358,7 @@ if ((isset($_GET['aksi']) && $_GET['aksi'] == 'form'))
 		    	
 		    	
 				$.ajax({
-					url: "<?php echo $filenyax;?>?aksi=form&limitku6=<?php echo $limitku;?>&cariku6=<?php echo $kunci;?>&page6="+pageke,
+					url: "<?php echo $filenyax;?>?aksi=form&limitku6=<?php echo $limitku;?>&sort6=<?php echo $sort;?>&cariku6=<?php echo $kunci;?>&page6="+pageke,
 					type:$(this).attr("method"),
 					data:$(this).serialize(),
 					success:function(data){					
@@ -387,6 +417,9 @@ if ((isset($_GET['aksi']) && $_GET['aksi'] == 'form'))
 	  
 	<?php
 	$sortx = cegah($_SESSION['sortx6']);
+	$sortnya = cegah($_SESSION['sortnya']);
+	$sort = cegah($_SESSION['sortkolom']);
+	
 	
 	//jika ada sort
 	if ($sort == "ia6")
