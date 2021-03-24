@@ -95,6 +95,31 @@ $.ajax({
 
 
 
+$("#btnBARU").on('click', function(){
+
+	$.ajax({
+		url: "<?php echo $filenyax46;?>?aksi=formbaru",
+		type:$(this).attr("method"),
+		data:$(this).serialize(),
+		success:function(data){				
+			$(".modal-title").html("ENTRI BARU");
+			$(".modal-body").html(data);
+			$("#myModal").modal('show');
+			}
+		});
+
+	});
+
+
+
+
+
+
+
+
+
+
+
 $("#cariku6").on('keyup', function(){
 		var limitku = $("#pagesetnya6").val();
     	var cariku = $("#cariku6").val();
@@ -149,526 +174,6 @@ $("#pagesetnya6").on('change', function(){
 
 
 
-<script language='javascript'>
-//membuat document jquery
-$(document).ready(function(){
-
-
-var pageku = $("#pagesetnya7").val();
-
-
-$.ajax({
-	url: "<?php echo $filenyax47;?>?aksi=form&pageku="+pageku,
-	type:$(this).attr("method"),
-	data:$(this).serialize(),
-	success:function(data){					
-		$("#idetailtable7").html(data);
-		}
-	});
-
-
-
-
-
-
-
-$.ajax({
-	url: "<?php echo $filenyax47;?>?aksi=jmldatanya",
-	type:$(this).attr("method"),
-	data:$(this).serialize(),
-	success:function(data){					
-		$("#ijmldatanya7").html(data);
-		}
-	});
-
-
-
-
-
-
-
-
-
-
-$("#cariku7").on('keyup', function(){
-		var limitku = $("#pagesetnya7").val();
-    	var cariku = $("#cariku7").val();
-
-		$.ajax({
-			url: "<?php echo $filenyax47;?>?aksi=form&limitku7="+limitku+"&cariku7="+cariku,
-			type:$(this).attr("method"),
-			data:$(this).serialize(),
-			success:function(data){					
-				$("#idetailtable7").html(data);
-				}
-			});
-	});
-
-
-
-
-
-
-$("#pagesetnya7").on('change', function(){
-	var limitku = $("#pagesetnya7").val();
-	var cariku = $("#cariku7").val();
-
-
-	$.ajax({
-		url: "<?php echo $filenyax47;?>?aksi=form&limitku7="+limitku+"&cariku7="+cariku,
-		type:$(this).attr("method"),
-		data:$(this).serialize(),
-		success:function(data){					
-			$("#idetailtable7").html(data);
-			}
-		});
-	
-
-	});
-
-
-
-
-
-});
-
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script language='javascript'>
-//membuat document jquery
-$(document).ready(function(){
-
-
-var pageku = $("#pagesetnya8").val();
-
-
-$.ajax({
-	url: "<?php echo $filenyax48;?>?aksi=form&pageku="+pageku,
-	type:$(this).attr("method"),
-	data:$(this).serialize(),
-	success:function(data){					
-		$("#idetailtable8").html(data);
-		}
-	});
-
-
-
-
-
-
-
-$.ajax({
-	url: "<?php echo $filenyax48;?>?aksi=jmldatanya",
-	type:$(this).attr("method"),
-	data:$(this).serialize(),
-	success:function(data){					
-		$("#ijmldatanya8").html(data);
-		}
-	});
-
-
-
-
-
-
-
-
-
-
-$("#cariku8").on('keyup', function(){
-		var limitku = $("#pagesetnya8").val();
-    	var cariku = $("#cariku8").val();
-
-		$.ajax({
-			url: "<?php echo $filenyax48;?>?aksi=form&limitku8="+limitku+"&cariku8="+cariku,
-			type:$(this).attr("method"),
-			data:$(this).serialize(),
-			success:function(data){					
-				$("#idetailtable8").html(data);
-				}
-			});
-	});
-
-
-
-
-
-
-$("#pagesetnya8").on('change', function(){
-	var limitku = $("#pagesetnya8").val();
-	var cariku = $("#cariku8").val();
-
-
-	$.ajax({
-		url: "<?php echo $filenyax48;?>?aksi=form&limitku8="+limitku+"&cariku8="+cariku,
-		type:$(this).attr("method"),
-		data:$(this).serialize(),
-		success:function(data){					
-			$("#idetailtable8").html(data);
-			}
-		});
-	
-
-	});
-
-
-
-
-
-});
-
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-<script language='javascript'>
-//membuat document jquery
-$(document).ready(function(){
-
-
-var pageku = $("#pagesetnya9").val();
-
-
-$.ajax({
-	url: "<?php echo $filenyax49;?>?aksi=form&pageku="+pageku,
-	type:$(this).attr("method"),
-	data:$(this).serialize(),
-	success:function(data){					
-		$("#idetailtable9").html(data);
-		}
-	});
-
-
-
-
-
-
-
-$.ajax({
-	url: "<?php echo $filenyax49;?>?aksi=jmldatanya",
-	type:$(this).attr("method"),
-	data:$(this).serialize(),
-	success:function(data){					
-		$("#ijmldatanya9").html(data);
-		}
-	});
-
-
-
-
-
-
-
-
-
-
-$("#cariku9").on('keyup', function(){
-		var limitku = $("#pagesetnya9").val();
-    	var cariku = $("#cariku9").val();
-
-		$.ajax({
-			url: "<?php echo $filenyax49;?>?aksi=form&limitku9="+limitku+"&cariku9="+cariku,
-			type:$(this).attr("method"),
-			data:$(this).serialize(),
-			success:function(data){					
-				$("#idetailtable9").html(data);
-				}
-			});
-	});
-
-
-
-
-
-
-$("#pagesetnya9").on('change', function(){
-	var limitku = $("#pagesetnya9").val();
-	var cariku = $("#cariku9").val();
-
-
-	$.ajax({
-		url: "<?php echo $filenyax49;?>?aksi=form&limitku9="+limitku+"&cariku9="+cariku,
-		type:$(this).attr("method"),
-		data:$(this).serialize(),
-		success:function(data){					
-			$("#idetailtable9").html(data);
-			}
-		});
-	
-
-	});
-
-
-
-
-
-});
-
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-ke-6 : 
-
-
-
-<div class="row">
-
-	<div class="col-md-12" id="ijmldatanya6">
-			<img src="../../img/progress-bar.gif" width="150" />
-	</div>
-	
-</div>
-
-<div class="row">
-	
-	<div class="col-md-10">
-		
-		<select name="pagesetnya6" id="pagesetnya6" class="btn btn-warning">
-			<option value="10" selected>10</option>
-			<option value="30">30</option>
-			<option value="50">50</option>
-			<option value="100">100</option>
-		</select> Data per Halaman
-	</div>
-	
-	<div class="col-md-2">
-		 
-		<input type="text" class="btn btn-block btn-warning" name="cariku6" id="cariku6" placeholder="Cari...">
-	
-	</div>
-
-</div>
-		
-
-
-
-
-
-<div id="idetailtable6">
-	<img src="../../img/progress-bar.gif" width="150" />
-</div>
-
-<div id="iproses6"></div>
-
-
-
-
-
-
-
-
-
-
-<hr>
-
-
-
-
-
-
-
-
-
-
-ke-7 : 
-
-
-
-<div class="row">
-
-	<div class="col-md-12" id="ijmldatanya7">
-			<img src="../../img/progress-bar.gif" width="150" />
-	</div>
-	
-</div>
-
-<div class="row">
-	
-	<div class="col-md-10">
-		
-		<select name="pagesetnya7" id="pagesetnya7" class="btn btn-warning">
-			<option value="10" selected>10</option>
-			<option value="30">30</option>
-			<option value="50">50</option>
-			<option value="100">100</option>
-		</select> Data per Halaman
-	</div>
-	
-	<div class="col-md-2">
-		 
-		<input type="text" class="btn btn-block btn-warning" name="cariku7" id="cariku7" placeholder="Cari...">
-	
-	</div>
-
-</div>
-		
-
-
-
-
-
-<div id="idetailtable7">
-	<img src="../../img/progress-bar.gif" width="150" />
-</div>
-
-
-
-
-
-
-
-
-
-
-
-<hr>
-
-
-
-
-
-ke-8 : 
-
-
-
-<div class="row">
-
-	<div class="col-md-12" id="ijmldatanya8">
-			<img src="../../img/progress-bar.gif" width="150" />
-	</div>
-	
-</div>
-
-<div class="row">
-	
-	<div class="col-md-10">
-		
-		<select name="pagesetnya8" id="pagesetnya8" class="btn btn-warning">
-			<option value="10" selected>10</option>
-			<option value="30">30</option>
-			<option value="50">50</option>
-			<option value="100">100</option>
-		</select> Data per Halaman
-	</div>
-	
-	<div class="col-md-2">
-		 
-		<input type="text" class="btn btn-block btn-warning" name="cariku8" id="cariku8" placeholder="Cari...">
-	
-	</div>
-
-</div>
-		
-
-
-
-
-
-<div id="idetailtable8">
-	<img src="../../img/progress-bar.gif" width="150" />
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<hr>
-
-
-ke-9 : 
-
-
-
-<div class="row">
-
-	<div class="col-md-12" id="ijmldatanya9">
-			<img src="../../img/progress-bar.gif" width="150" />
-	</div>
-	
-</div>
-
-
-<div class="row">
-	<div class="col-md-10">		
-		<select name="pagesetnya9" id="pagesetnya9" class="btn btn-warning">
-			<option value="10" selected>10</option>
-			<option value="30">30</option>
-			<option value="50">50</option>
-			<option value="100">100</option>
-		</select> Data per Halaman
-	</div>
-	
-	<div class="col-md-2">
-		 
-		<input type="text" class="btn btn-block btn-warning" name="cariku9" id="cariku9" placeholder="Cari...">
-	
-	</div>
-
-</div>
-		
-
-
-
-
-
-<div id="idetailtable9">
-	<img src="../../img/progress-bar.gif" width="150" />
-</div>
-
-
-
-
-
-
-
-
 
 
 
@@ -700,14 +205,63 @@ ke-9 :
 <div class="modal-body">
 <p>isinya...</p>
 </div>
-<div class="modal-footer btn-default">
-<button type="button" class="btn btn-danger">SIMPAN</button>
-<button type="button" class="btn btn-secondary" data-dismiss="modal">KELUAR</button>
-</div>
+
 </div>
 </div>
 </div>
 
+
+
+
+
+
+
+
+
+
+ke-6 : 
+
+
+
+
+<div class="row">
+	
+	<div class="col-md-9">
+		<button id="btnBARU" class="btn btn-danger"><i class="fa fa-pencil"></i> ENTRI BARU</button>
+	</div>
+	
+	<div class="col-md-3" align="right">
+		<select name="pagesetnya6" id="pagesetnya6" class="btn btn-warning">
+			<option value="10" selected>10</option>
+			<option value="30">30</option>
+			<option value="50">50</option>
+			<option value="100">100</option>
+		</select>  
+		<input type="text" class="btn btn-warning" name="cariku6" id="cariku6" placeholder="Cari...">
+	
+	</div>
+
+</div>
+		
+
+
+
+
+
+<div id="idetailtable6">
+	<img src="../../img/progress-bar.gif" width="150" />
+</div>
+
+
+
+
+
+
+
+
+
+
+<hr>
 
 
 

@@ -394,7 +394,7 @@ if ((isset($_GET['aksi']) && $_GET['aksi'] == 'form'))
 							
 							
 							$.ajax({
-								url: "<?php echo $filenyax;?>?aksi=form&page6=<?php echo $page;?>",
+								url: "<?php echo $filenyax;?>?aksi=form&pageku="+pageku,
 								type:$(this).attr("method"),
 								data:$(this).serialize(),
 								success:function(data){					
@@ -704,9 +704,8 @@ if ((isset($_GET['aksi']) && $_GET['aksi'] == 'form'))
 	        </tr>';
 		
 			
-	//jika ada
-	if (!empty($count))
-		{		
+			
+	
 		do
 			{
 			if ($warna_set ==0)
@@ -742,18 +741,6 @@ if ((isset($_GET['aksi']) && $_GET['aksi'] == 'form'))
 	    	</tr>';
 			}
 		while ($data = mysqli_fetch_assoc($result));
-		}
-
-	else
-		{
-		echo "<tr valign=\"top\" bgcolor=\"$warna\" onmouseover=\"this.bgColor='$warnaover';\" onmouseout=\"this.bgColor='$warna';\">";
-		echo '<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-    	</tr>';			
-		}
 
 
 			echo '<tr bgcolor="'.$warnaheader.'">
@@ -778,7 +765,6 @@ if ((isset($_GET['aksi']) && $_GET['aksi'] == 'form'))
 		
 		echo '</tbody>
 		  </table>
-		  
 		  </div>
 
 
@@ -939,38 +925,6 @@ if ((isset($_GET['aksi']) && $_GET['aksi'] == 'updateya'))
 
 
 
-//jika baru ya
-if ((isset($_GET['aksi']) && $_GET['aksi'] == 'baruya'))
-	{
-	//ambil nilai
-	$kd6 = cegah($_GET['kd6']);
-	$e_kode6 = cegah($_GET['e_kode6']);
-	$e_nama6 = cegah($_GET['e_nama6']);
-
-
-	//insert
-	mysqli_query($koneksi, "INSERT INTO $tabel2(kd, orang_kode, orang_nama, postdate) VALUES ".
-								"('$kd6', '$e_kode6', '$e_nama6', '$today')");
-
-	
-	echo "<b>
-	<font color='green'>
-	Entri Baru Berhasil.
-	</font>
-	</b>";
-
-	exit();
-	}
-
-
-
-
-
-
-
-
-
-
 
 
 //jika formedit
@@ -1088,119 +1042,6 @@ if ((isset($_GET['aksi']) && $_GET['aksi'] == 'formedit'))
 	exit();
 	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-//jika formbaru
-if ((isset($_GET['aksi']) && $_GET['aksi'] == 'formbaru'))
-	{
-	//nilai
-	$kd = cegah($_GET['kd']);
-	?>
-	
-	<script language='javascript'>
-	//membuat document jquery
-	$(document).ready(function(){
-
-		$("#btnKRM26").on('click', function(){
-			
-				$("#formx16").submit(function(){
-					$.ajax({
-						url: "<?php echo $filenyax;?>?aksi=baruya",
-						type:$(this).attr("method"),
-						data:$(this).serialize(),
-						success:function(data){				
-							$("#ihasil6").html(data);
-							
-
-
-							
-							var pageku = $("#pagesetnya6").val();
-							
-							
-							$.ajax({
-								url: "<?php echo $filenyax;?>?aksi=form",
-								type:$(this).attr("method"),
-								data:$(this).serialize(),
-								success:function(data){					
-									$("#idetailtable6").html(data);
-									}
-								});
-							
-							
-							
-							
-							
-							
-							
-							$.ajax({
-								url: "<?php echo $filenyax;?>?aksi=jmldatanya",
-								type:$(this).attr("method"),
-								data:$(this).serialize(),
-								success:function(data){					
-									$("#ijmldatanya6").html(data);
-									}
-								});
-
-
-							
-
-							}
-						});
-					return false;
-					});
-								    	
-									
-			});
-	
-
-
-
-
-		});
-	  </script>
-
-	
-	<?php
-	echo '<form name="formx16" id="formx16">
-	
-	<p>
-	Kode : 
-	<br>
-	<input name="e_kode6" id="e_kode6" type="text" class="btn btn-block btn-warning" value="" required>
-	</p>
-	<br>
-	
-	<p>
-	Nama : 
-	<br>
-	<input name="e_nama6" id="e_nama6" type="text" class="btn btn-block btn-warning" value="" required>
-	</p>
-
-
-	<div id="ihasil6"></div>
-
-	<hr>
-	<input name="kd6" id="kd6" type="hidden" value="'.$x.'">
-	
-	
-	<button id="btnKRM26" class="btn btn-danger"><i class="fa fa-save"></i> SIMPAN >></button>
-	
-	<button class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-close"></i> KELUAR >></button>
-	</form>';
-
-
-	exit();
-	}
 
 
 
